@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table align="right">
+<form action="path5" method="POST" >
+  {% csrf_token %}
+  <tr>
+  <th>  </th>
+  <td><input type="text"  name="name1" placeholder="Search your Person Here"></td>
+    <td> <input type="submit" value="OK"></td>
+  </form>
+  </table>
+
+{% if searchkey %}
+
+{% for i in searchkey %}
+<u1>
+    <li>{{i.Firstname}}</li>
+    <li>{{i.Lastname}}</li>
+    <li>{{i.Age}}</li>
+    <li>{{i.Email}}</li>
+    <li>{{i.Dob}}</li>
+    <li>{{i.Qualification}}</li>
+    <li><img src="{{i.Image.url}}"></li>
+
+
+
+</u1>
+{% endfor %}
+{% else %}
+
+
+
+{% for i in datakey %}
+<u1>
+    <li>{{i.Firstname}}</li>
+    <li>{{i.Lastname}}</li>
+    <li>{{i.Age}}</li>
+    <li><img src="{{i.Image.url}}"></li>
+    <li><a href="/path7/{{i.id}}">delete</a></li>
+    <li><a href="/path4/{{i.id}}">Update</a></li>
+
+
+</u1>
+{% endfor %}
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Firstnames</title>
+</head>
+<body>
+    <h1>First Names from Database</h1>
+
+    <!-- Form to trigger the fetching of first names -->
+    <form method="post" action="{% url 'display_firstnames' %}">
+        {% csrf_token %}
+        <button type="submit">Get Firstnames</button>
+    </form>
+
+    <!-- Display the list of first names -->
+    {% if firstnameskey %}
+        <ul>
+            {% for firstname in firstnameskey %}
+                <li>{{ firstname }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
